@@ -20,9 +20,8 @@ This is a fully functional blog application built with React.js, utilizing Mater
 
 ## Setup Instructions
 
-
 1. Clone the repository:
-git clone https://github.com/your-username/react-blog-app.git
+git clone https://github.com/mkunboxing/vercos-blog-assingment.git
 cd react-blog-app
 Copy
 2. Install dependencies:
@@ -42,7 +41,7 @@ This will create a `build` folder with all the production-ready files.
 
 ## Deployment
 
-The application is deployed and can be accessed at: [Your Deployment URL]
+The application is deployed and can be accessed at: [[Deployment URL](https://blog-app-snowy-psi.vercel.app/)]
 
 ## Contributing
 
