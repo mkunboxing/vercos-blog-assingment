@@ -1,10 +1,25 @@
-# Getting Started with Create React App
+# React Blog Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+This is a fully functional blog application built with React.js, utilizing Material-UI (MUI) for styling, Redux for state management, and Jodit-React as a rich text editor. The application allows users to create, edit, and delete blog posts, and includes a theme switcher to toggle between light and dark modes.
 
-## Available Scripts
+## Features
+- Create, edit, and delete blog posts
+- Rich text editing with Jodit-React
+- Theme switcher (Light/Dark mode)
+- Responsive design for various screen sizes
+- Centralized state management with Redux
+- React Router for navigation
 
-In the project directory, you can run:
+## Technologies Used
+- React.js
+- Redux (with Redux Toolkit)
+- Material-UI
+- Jodit-React
+- React Router
+
+## Setup Instructions
+
 
 ### `npm start`
 
