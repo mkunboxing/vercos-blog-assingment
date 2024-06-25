@@ -4,9 +4,9 @@
 This is a fully functional blog application built with React.js, utilizing Material-UI (MUI) for styling, Redux for state management, and Jodit-React as a rich text editor. The application allows users to create, edit, and delete blog posts, and includes a theme switcher to toggle between light and dark modes.
 
 ## Features
-- Create, edit, and delete blog posts
+- Create, edit, and delete blog posts and save to localstorage
 - Rich text editing with Jodit-React
-- Theme switcher (Light/Dark mode)
+- Theme switcher (Light/Dark mode) with localstorage
 - Responsive design for various screen sizes
 - Centralized state management with Redux
 - React Router for navigation

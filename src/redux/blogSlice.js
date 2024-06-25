@@ -1,12 +1,21 @@
-
 import { createSlice } from '@reduxjs/toolkit';
+
+
+const loadState = () => {
+  try {
+    const serializedState = localStorage.getItem('blogState');
+    if (serializedState === null) {
+      return { posts: [], theme: 'light' };
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return { posts: [], theme: 'light' };
+  }
+};
 
 const blogSlice = createSlice({
   name: 'blog',
-  initialState: {
-    posts: [],
-    theme: 'light',
-  },
+  initialState: loadState(),
   reducers: {
     addPost: (state, action) => {
       state.posts.push(action.payload);
