@@ -1,10 +1,9 @@
-// src/redux/authSlice.js
 
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoggedIn: localStorage.getItem('isLoggedIn') === 'true' || false,
-  user: null, // You can store user details here
+  user: null, 
 };
 
 const authSlice = createSlice({

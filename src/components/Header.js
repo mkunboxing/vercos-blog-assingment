@@ -18,14 +18,13 @@ function Header() {
     if (isLoggedIn) {
       navigate('/create');
     } else {
-      // Save the intended location in localStorage
       localStorage.setItem('intendedLocation', location.pathname);
       navigate('/login');
     }
   };
 
   const handleLogoutClick = () => {
-    dispatch(logout()); // Assuming logout action clears authentication state
+    dispatch(logout());
     navigate('/');
   };
 

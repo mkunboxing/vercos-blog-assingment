@@ -1,4 +1,4 @@
-// src/components/RichTextEditor.js
+
 import React from 'react';
 import JoditEditor from "jodit-react";
 import { useSelector } from 'react-redux';

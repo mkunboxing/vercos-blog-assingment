@@ -1,18 +1,94 @@
 const dummyData = [
-    {
-      id: 1,
-      title: "Sample Post 1",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      imageUrl: "https://fastly.picsum.photos/id/1/5000/3333.jpg?hmac=Asv2DU3rA_5D1xSe22xZK47WEAN0wjWeFOhzd13ujW4",
-    },
-    {
-      id: 2,
-      title: "Sample Post 2",
-      content: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-      imageUrl: "https://fastly.picsum.photos/id/20/3670/2462.jpg?hmac=CmQ0ln-k5ZqkdtLvVO23LjVAEabZQx2wOaT4pyeG10I",
-    },
-    // Add more dummy posts as needed
-  ];
-  
-  export default dummyData;
-  
+  {
+    id: 1,
+    title: "Sample Post 1",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    name: "John Doe",
+    shortDescription: "A brief description of Sample Post 1.",
+    imageUrl: "https://picsum.photos/id/1/500/300",
+    dateCreated: "2024-06-28",
+  },
+  {
+    id: 2,
+    title: "Sample Post 2",
+    content: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+    name: "Jane Smith",
+    shortDescription: "A brief description of Sample Post 2.",
+    imageUrl: "https://picsum.photos/id/10/500/300",
+    dateCreated: "2024-06-29",
+  },
+  {
+    id: 3,
+    title: "Sample Post 3",
+    content: "Integer vitae velit sed libero sagittis efficitur.",
+    name: "Michael Brown",
+    shortDescription: "A brief description of Sample Post 3.",
+    imageUrl: "https://picsum.photos/id/20/500/300",
+    dateCreated: "2024-06-30",
+  },
+  {
+    id: 4,
+    title: "Sample Post 4",
+    content: "Fusce et luctus lorem, at dictum libero.",
+    name: "Emily Johnson",
+    shortDescription: "A brief description of Sample Post 4.",
+    imageUrl: "https://picsum.photos/id/30/500/300",
+    dateCreated: "2024-07-01",
+  },
+  {
+    id: 5,
+    title: "Sample Post 5",
+    content: "Duis nec faucibus ipsum. Nulla eget erat nec justo sollicitudin sodales.",
+    name: "William Wilson",
+    shortDescription: "A brief description of Sample Post 5.",
+    imageUrl: "https://picsum.photos/id/40/500/300",
+    dateCreated: "2024-07-02",
+  },
+  {
+    id: 6,
+    title: "Sample Post 6",
+    content: "Vivamus laoreet erat ut leo varius, id volutpat leo feugiat.",
+    name: "Olivia Martinez",
+    shortDescription: "A brief description of Sample Post 6.",
+    imageUrl: "https://picsum.photos/id/50/500/300",
+    dateCreated: "2024-07-03",
+  },
+  {
+    id: 7,
+    title: "Sample Post 7",
+    content: "Maecenas sed metus sed quam convallis mattis.",
+    name: "Daniel Miller",
+    shortDescription: "A brief description of Sample Post 7.",
+    imageUrl: "https://picsum.photos/id/60/500/300",
+    dateCreated: "2024-07-04",
+  },
+  {
+    id: 8,
+    title: "Sample Post 8",
+    content: "Praesent ut nulla at nunc vestibulum ultricies.",
+    name: "Sophia Garcia",
+    shortDescription: "A brief description of Sample Post 8.",
+    imageUrl: "https://picsum.photos/id/70/500/300",
+    dateCreated: "2024-07-05",
+  },
+  {
+    id: 9,
+    title: "Sample Post 9",
+    content: "Curabitur ultricies nisi at est euismod suscipit.",
+    name: "Matthew Taylor",
+    shortDescription: "A brief description of Sample Post 9.",
+    imageUrl: "https://picsum.photos/id/80/500/300",
+    dateCreated: "2024-07-06",
+  },
+  {
+    id: 10,
+    title: "Sample Post 10",
+    content: "Donec vel lacinia orci. Quisque et ex non ligula scelerisque dictum.",
+    name: "Emma Martinez",
+    shortDescription: "A brief description of Sample Post 10.",
+    imageUrl: "https://picsum.photos/id/90/500/300",
+    dateCreated: "2024-07-07",
+  },
+];
+
+export default dummyData;

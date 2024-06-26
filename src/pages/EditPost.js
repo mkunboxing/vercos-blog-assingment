@@ -12,7 +12,7 @@ function EditPost() {
   const [content, setContent] = useState('');
   const [name, setName] = useState('');
   const [shortDescription, setShortDescription] = useState('');
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function EditPost() {
       setContent(post.content);
       setName(post.name);
       setShortDescription(post.shortDescription);
-      setImage(post.image);
+      setImage(post.imageUrl); 
     }
   }, [post]);
 
@@ -30,7 +30,7 @@ function EditPost() {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
-      setImage(reader.result);
+      setImage(reader.result); 
     };
     reader.readAsDataURL(file);
   };
@@ -43,7 +43,7 @@ function EditPost() {
       content,
       name,
       shortDescription,
-      image,
+      imageUrl: image, 
       dateCreated: post.dateCreated
     }));
     navigate('/');

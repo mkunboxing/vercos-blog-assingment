@@ -9,8 +9,8 @@ import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
 import Login from './components/Login';
-import { store } from './redux/store'; // Assuming your Redux store is exported as 'store'
 import './styles/global.css';
+import BlogDetail from './pages/BlogDetails';
 
 function App() {
   const theme = useSelector(state => state.blog.theme);
@@ -29,6 +29,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreatePost />} />
           <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/login" element={<Login />} />
         </Routes>
       </Router>

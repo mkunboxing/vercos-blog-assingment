@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import dummyData from '../data/dummyData';
 
-// Load state from localStorage
+
 const loadState = () => {
   try {
     const serializedState = localStorage.getItem('blogState');
@@ -14,7 +14,6 @@ const loadState = () => {
   }
 };
 
-// Initial state with combined data from dummyData and localStorage
 const initialState = loadState();
 
 const blogSlice = createSlice({
@@ -23,7 +22,7 @@ const blogSlice = createSlice({
   reducers: {
     addPost: (state, action) => {
       state.posts.push(action.payload);
-      saveState(state); // Save updated state to localStorage
+      saveState(state); 
     },
     editPost: (state, action) => {
       const { id, title, content, imageUrl, name, shortDescription, dateCreated } = action.payload;
@@ -35,24 +34,23 @@ const blogSlice = createSlice({
         existingPost.shortDescription = shortDescription;
         existingPost.dateCreated = dateCreated;
         if (imageUrl) {
-          existingPost.imageUrl = imageUrl; // Temporary URL for preview
+          existingPost.imageUrl = imageUrl;
         }
       }
-      saveState(state); // Save updated state to localStorage
+      saveState(state); 
     },
     deletePost: (state, action) => {
       const postId = action.payload;
       state.posts = state.posts.filter(post => post.id !== postId);
-      saveState(state); // Save updated state to localStorage
+      saveState(state); 
     },
     toggleTheme: (state) => {
       state.theme = state.theme === 'light' ? 'dark' : 'light';
-      saveState(state); // Save updated state to localStorage
+      saveState(state); 
     },
   },
 });
 
-// Save state to localStorage
 const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
