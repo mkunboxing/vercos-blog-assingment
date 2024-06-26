@@ -9,8 +9,9 @@ import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
 import Login from './components/Login';
-import './styles/global.css';
 import BlogDetail from './pages/BlogDetails';
+import CategoryPage from './pages/CategoryPage'; // Import CategoryPage
+import './styles/global.css';
 
 function App() {
   const theme = useSelector(state => state.blog.theme);
@@ -31,6 +32,7 @@ function App() {
           <Route path="/edit/:id" element={<EditPost />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/category/:category" element={<CategoryPage />} /> {/* Add category route */}
         </Routes>
       </Router>
     </ThemeProvider>

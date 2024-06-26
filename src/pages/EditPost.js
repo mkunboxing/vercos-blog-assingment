@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, TextField, Button, Typography } from '@mui/material';
+import { Container, TextField, Button, Typography, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import RichTextEditor from '../components/RichTextEditor';
 import { editPost, deletePost } from '../redux/blogSlice';
+
+const categories = ["Technology", "Travel", "Food", "Lifestyle"]; // Add your categories here
 
 function EditPost() {
   const { id } = useParams();
@@ -13,6 +15,7 @@ function EditPost() {
   const [name, setName] = useState('');
   const [shortDescription, setShortDescription] = useState('');
   const [image, setImage] = useState('');
+  const [category, setCategory] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -22,7 +25,8 @@ function EditPost() {
       setContent(post.content);
       setName(post.name);
       setShortDescription(post.shortDescription);
-      setImage(post.imageUrl); 
+      setImage(post.imageUrl);
+      setCategory(post.category);
     }
   }, [post]);
 
@@ -30,7 +34,7 @@ function EditPost() {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
-      setImage(reader.result); 
+      setImage(reader.result);
     };
     reader.readAsDataURL(file);
   };
@@ -43,7 +47,8 @@ function EditPost() {
       content,
       name,
       shortDescription,
-      imageUrl: image, 
+      imageUrl: image,
+      category,
       dateCreated: post.dateCreated
     }));
     navigate('/');
@@ -84,6 +89,17 @@ function EditPost() {
           margin="normal"
           required
         />
+        <FormControl fullWidth margin="normal" required>
+          <InputLabel>Category</InputLabel>
+          <Select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            {categories.map((cat) => (
+              <MenuItem key={cat} value={cat}>{cat}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <RichTextEditor
           content={content}
           setContent={setContent}

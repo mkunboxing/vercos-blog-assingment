@@ -28,17 +28,31 @@ function Header() {
     navigate('/');
   };
 
+  const linkStyle = (path) => ({
+    color: location.pathname === path ? 'white' : 'inherit',
+    textDecoration: location.pathname === path ? 'underline' : 'none',
+    fontWeight: location.pathname === path ? 'bold' : 'normal',
+  });
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>Blog App Assignment</Link>
+          <Typography>Blog App</Typography>
         </Typography>
-        <Button color="inherit" onClick={handleCreatePostClick}>Create Post</Button>
+        <Button color="inherit" component={Link} to="/" style={linkStyle('/')}>Home</Button>
+        <Button color="inherit" component={Link} to="/category/technology" style={linkStyle('/category/technology')}>Technology</Button>
+        <Button color="inherit" component={Link} to="/category/travel" style={linkStyle('/category/travel')}>Travel</Button>
+        <Button color="inherit" component={Link} to="/category/food" style={linkStyle('/category/food')}>Food</Button>
+        <Button color="inherit" component={Link} to="/category/lifestyle" style={linkStyle('/category/lifestyle')}>Lifestyle</Button>
+        
         {isLoggedIn ? (
+          <>
+          <Button color="inherit" onClick={handleCreatePostClick}>Create Post</Button>
           <Button color="inherit" onClick={handleLogoutClick}>Logout</Button>
+          </>
+          
         ) : (
-          <Button component={Link} to="/login" color="inherit">Login</Button>
+          <Button component={Link} to="/login" color="inherit" style={linkStyle('/login')}>Login</Button>
         )}
         <IconButton onClick={() => dispatch(toggleTheme())} color="inherit">
           {theme === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
