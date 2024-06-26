@@ -35,7 +35,7 @@ function Header() {
   };
 
   const linkStyle = (path) => ({
-    color: location.pathname === path ? 'white' : 'inherit',
+    color: location.pathname === path ? 'red' : 'inherit',
     textDecoration: location.pathname === path ? 'underline' : 'none',
     fontWeight: location.pathname === path ? 'bold' : 'normal',
   });
@@ -82,7 +82,7 @@ function Header() {
             >
               <List>
                 {menuItems.props.children.map((item, index) => (
-                  <ListItem button key={index} onClick={() => setDrawerOpen(false)}>
+                  <ListItem key={index} onClick={() => setDrawerOpen(false)}>
                     {item.type === Button ? (
                       <Button
                         color="inherit"
