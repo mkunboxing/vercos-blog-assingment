@@ -8,10 +8,13 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
+import Login from './components/Login';
+import { store } from './redux/store'; // Assuming your Redux store is exported as 'store'
 import './styles/global.css';
 
 function App() {
   const theme = useSelector(state => state.blog.theme);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   useEffect(() => {
     document.body.style.backgroundColor = theme === 'light' ? '#ffffff' : '#121212';
@@ -21,11 +24,12 @@ function App() {
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <CssBaseline />
       <Router>
-        <Header />
+        <Header isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreatePost />} />
           <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </ThemeProvider>

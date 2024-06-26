@@ -1,5 +1,3 @@
-// src/redux/blogSlice.js
-
 import { createSlice } from '@reduxjs/toolkit';
 import dummyData from '../data/dummyData';
 
@@ -23,43 +21,24 @@ const blogSlice = createSlice({
   name: 'blog',
   initialState,
   reducers: {
-    addPost: {
-      reducer(state, action) {
-        state.posts.push(action.payload);
-      },
-      prepare(formData) {
-        return {
-          payload: {
-            id: Date.now(),
-            title: formData.get('title'),
-            content: formData.get('content'),
-            imageUrl: URL.createObjectURL(formData.get('image')),
-          },
-        };
-      },
+    addPost: (state, action) => {
+      state.posts.push(action.payload);
+      saveState(state); // Save updated state to localStorage
     },
-    editPost: {
-      reducer(state, action) {
-        const { id, title, content, imageUrl } = action.payload;
-        const existingPost = state.posts.find(post => post.id === id);
-        if (existingPost) {
-          existingPost.title = title;
-          existingPost.content = content;
-          if (imageUrl) {
-            existingPost.imageUrl = URL.createObjectURL(imageUrl); // Temporary URL for preview
-          }
+    editPost: (state, action) => {
+      const { id, title, content, imageUrl, name, shortDescription, dateCreated } = action.payload;
+      const existingPost = state.posts.find(post => post.id === id);
+      if (existingPost) {
+        existingPost.title = title;
+        existingPost.content = content;
+        existingPost.name = name;
+        existingPost.shortDescription = shortDescription;
+        existingPost.dateCreated = dateCreated;
+        if (imageUrl) {
+          existingPost.imageUrl = imageUrl; // Temporary URL for preview
         }
-      },
-      prepare(formData) {
-        return {
-          payload: {
-            id: parseInt(formData.get('id')),
-            title: formData.get('title'),
-            content: formData.get('content'),
-            imageUrl: formData.get('image'),
-          },
-        };
-      },
+      }
+      saveState(state); // Save updated state to localStorage
     },
     deletePost: (state, action) => {
       const postId = action.payload;

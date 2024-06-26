@@ -1,9 +1,7 @@
-// src/pages/EditPost.js
-
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, TextField, Button, Typography, CardMedia } from '@mui/material';
+import { Container, TextField, Button, Typography } from '@mui/material';
 import RichTextEditor from '../components/RichTextEditor';
 import { editPost, deletePost } from '../redux/blogSlice';
 
@@ -12,7 +10,9 @@ function EditPost() {
   const post = useSelector(state => state.blog.posts.find(p => p.id === parseInt(id)));
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [image, setImage] = useState(null); // State to hold the selected image file
+  const [name, setName] = useState('');
+  const [shortDescription, setShortDescription] = useState('');
+  const [image, setImage] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,27 +20,32 @@ function EditPost() {
     if (post) {
       setTitle(post.title);
       setContent(post.content);
+      setName(post.name);
+      setShortDescription(post.shortDescription);
+      setImage(post.image);
     }
   }, [post]);
 
-  const handleImageChange = (e) => {
+  const handleImageUpload = (e) => {
     const file = e.target.files[0];
-    setImage(file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Prepare FormData to include title, content, and optionally image file
-    const formData = new FormData();
-    formData.append('id', parseInt(id));
-    formData.append('title', title);
-    formData.append('content', content);
-    if (image) {
-      formData.append('image', image);
-    }
-
-    dispatch(editPost(formData));
+    dispatch(editPost({
+      id: parseInt(id),
+      title,
+      content,
+      name,
+      shortDescription,
+      image,
+      dateCreated: post.dateCreated
+    }));
     navigate('/');
   };
 
@@ -49,12 +54,20 @@ function EditPost() {
     navigate('/');
   };
 
-  if (!post) return <Typography variant="h6">Post not found</Typography>;
+  if (!post) return <Typography>Post not found</Typography>;
 
   return (
     <Container maxWidth="md">
       <Typography variant="h4" gutterBottom>Edit Post</Typography>
       <form onSubmit={handleSubmit}>
+        <TextField
+          fullWidth
+          label="Author Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          margin="normal"
+          required
+        />
         <TextField
           fullWidth
           label="Title"
@@ -63,25 +76,31 @@ function EditPost() {
           margin="normal"
           required
         />
+        <TextField
+          fullWidth
+          label="Short Description"
+          value={shortDescription}
+          onChange={(e) => setShortDescription(e.target.value)}
+          margin="normal"
+          required
+        />
         <RichTextEditor
           content={content}
           setContent={setContent}
         />
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          style={{ marginTop: '10px' }}
-        />
-        {image && (
-          <CardMedia
-            component="img"
-            height="200"
-            image={URL.createObjectURL(image)}
-            alt="Selected Image"
-            style={{ marginTop: '10px' }}
+        <Button
+          variant="contained"
+          component="label"
+          sx={{ mt: 2, mr: 2 }}
+        >
+          Upload Image
+          <input
+            type="file"
+            hidden
+            onChange={handleImageUpload}
           />
-        )}
+        </Button>
+        {image && <img src={image} alt="Post" style={{ maxWidth: '100%', marginTop: '10px' }} />}
         <Button type="submit" variant="contained" color="primary" sx={{ mt: 2, mr: 1 }}>
           Update Post
         </Button>
